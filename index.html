@@ -42,17 +42,9 @@
             text-decoration: underline;
         }
         
-        .intro.active {
-            background-color: blue;
-            color: white;
-        }
-        
         @media (max-width: 766px) {
             #lap {
                 display: none;
-            }
-            #notLap {
-                display: ;
             }
         }
         
@@ -76,39 +68,64 @@
                 <div class="col-md-6 text-center">
                     <h1 class="title">Class Time</h1>
                     <h3>Manage your sessions and links together Virtual Time Table in your fingertips</h3>
-                    <br>
+                    <h4 id="notLap">>>>> Dark Theme Enabled
+                        <<<<<</h4>
+                            <br>
 
-                    <a href="Class Time v1.0.4.apk" role="button" class="btn btn-white btn-round btn-lg">
-                        <p style="color: black;"><i class="material-icons">vertical_align_bottom</i>Download</p>
-                    </a>
+                            <a href="Class Time v1.0.7.apk" role="button" class="btn btn-white btn-round btn-lg">
+                                <p style="color: black;"><i class="material-icons" style="font-size: 2.4em;">vertical_align_bottom</i></p>
+                            </a>
 
-                    <a href="https://youtu.be/zFpLK1Cw_eU" target="_blank" id="notLap" role="button" class="btn btn-white btn-round btn-lg">
-                        <p style="color: black;">Intro Video</p>
-                    </a>
+                            <a href="https://play.google.com/store/apps/details?id=com.davish.class_time" role="button" class="btn btn-white btn-round btn-lg">
+                                <p style="color: black;"><i class="material-icons" style="font-size: 2.4em;">shop</i> </p>
+                            </a>
 
-                    <a href="https://youtu.be/HIkbTo0YmOA" target="_blank" id="notLap" role="button" class="btn btn-white btn-round btn-lg">
-                        <p style="color: black;">Demo Video</p>
-                    </a>
-                    <br><br>
+                            <a href="https://youtu.be/zFpLK1Cw_eU" target="_blank" id="notLap" role="button" class="btn btn-white btn-round btn-lg">
+                                <p style="color: black;">Intro Video</p>
+                            </a>
 
-                    <h5>With <i class="fa fa-heart" style="color:red"></i> by <a href="https://davish.me">Davish</a></h5>
+                            <a href="https://youtu.be/HIkbTo0YmOA" target="_blank" id="notLap" role="button" class="btn btn-white btn-round btn-lg">
+                                <p style="color: black;">Demo Video</p>
+                            </a>
+                            <br><br>
+
+                            <h5>With <i class="fa fa-heart" style="color:red"></i> by <a href="https://davish.me">Davish</a></h5>
                 </div>
 
                 <div class="col-md-6 text-center" id="lap">
-                    <iframe style="display: block;" id="introVideo" width="100%" height="100%" src="https://www.youtube.com/embed/zFpLK1Cw_eU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+
+                    <div id="updatesDiv">
+                        <h1 class="title">We are In Play Store</h1>
+                        <h3>Dark Theme Added</h3>
+                        <p>To get Dark theme without loosing data (if Previously Installed):
+                            <ul style="text-align: start;">
+                                <li>Download the App from Website (not Play Store)</li>
+                                <li>Export the TimeTable (after installation)</li>
+                                <li>Uninstall and Install from Play Store</li>
+                                <li>Import QR</li>
+                            </ul>
+                        </p><br><br>
+                    </div>
+
+                    <iframe style="display: none;" id="introVideo" width="100%" height="100%" src="https://www.youtube.com/embed/zFpLK1Cw_eU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
                     </iframe>
 
                     <iframe style="display: none;" id="demoVideo" width="100%" height="100%" src="https://www.youtube.com/embed/HIkbTo0YmOA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
                     <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                            <input class="btn btn-white btn-round btn-lg intro" style="color: white;background-color: blue;" type="button" id="intro" value="Intro" onclick="setColor('intro','demo')" ;/>
+
+                        <div class="col-md-4 col-sm-4">
+                            <input class="btn btn-white btn-round btn-lg " style="color: white;background-color: blue;" type="button" id="updates" value="Updates" onclick="setColor('updates','intro','demo')" ;/>
+                        </div>
+
+                        <div class="col-md-4 col-sm-4">
+                            <input class="btn btn-white btn-round btn-lg " style="color: black;" type="button" id="intro" value="Intro" onclick="setColor('intro','demo','updates')" ;/>
                         </div>
 
 
-                        <div class="col-md-6 col-sm-6">
-                            <input class="btn btn-white btn-round btn-lg intro" style="color: black;" type="button" id="demo" value="Demo" onclick="setColor('demo','intro')" ;/>
+                        <div class="col-md-4 col-sm-4">
+                            <input class="btn btn-white btn-round btn-lg " style="color: black;" type="button" id="demo" value="Demo" onclick="setColor('demo','intro','updates')" ;/>
 
                         </div>
                     </div>
@@ -121,7 +138,7 @@
 </body>
 
 <script>
-    function setColor(btn, btn2) {
+    function setColor(btn, btn2, btn3) {
         var property = document.getElementById(btn);
         property.style.backgroundColor = "#0000ff";
         property.style.color = "#fff"
@@ -131,15 +148,28 @@
         property2.style.backgroundColor = "#fff";
         property2.style.color = "#000"
 
+        var property3 = document.getElementById(btn3);
+        property3.style.backgroundColor = "#fff";
+        property3.style.color = "#000"
+
         if (btn == "intro") {
             document.getElementById("demoVideo").style.display = "none"
+            document.getElementById("updatesDiv").style.display = "none"
             document.getElementById("introVideo").style.display = "block"
         }
 
 
         if (btn == "demo") {
             document.getElementById("introVideo").style.display = "none"
+            document.getElementById("updatesDiv").style.display = "none"
             document.getElementById("demoVideo").style.display = "block"
+        }
+
+
+        if (btn == "updates") {
+            document.getElementById("introVideo").style.display = "none"
+            document.getElementById("updatesDiv").style.display = "block"
+            document.getElementById("demoVideo").style.display = "none"
         }
     }
 </script>
